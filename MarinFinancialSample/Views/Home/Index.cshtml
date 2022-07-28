@@ -1,0 +1,35 @@
+﻿@model MarinFinancialSample.Models.EntityCountViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Local Library Home</h1>
+    <p>The Library has the following Content</p>
+    <h2>Library Content</h2>
+    <div width="300px">
+         <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span class="fw-bold">Books:</span>
+            <span class="badge bg-primary rounded-pill"> @Model.BookCount</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span class="fw-bold">Copies:</span>
+            <span class="badge bg-primary rounded-pill"> @Model.BookInstanceCount</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span class="fw-bold">Copies Available:</span>
+            <span class="badge bg-primary rounded-pill"> @Model.CopiesAvailable</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span class="fw-bold">Authors:</span>
+            <span class="badge bg-primary rounded-pill"> @Model.AuthorCount</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span class="fw-bold">Genres:</span>
+            <span class="badge bg-primary rounded-pill"> @Model.GenreCount</span>
+        </li>
+    </ul>
+    </div>
+</div>
