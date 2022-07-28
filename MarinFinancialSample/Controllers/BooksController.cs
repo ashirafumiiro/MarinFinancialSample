@@ -76,8 +76,8 @@ namespace MarinFinancialSample.Controllers
                 ModelState.AddModelError(string.Empty, $@"Unable to create record: {ex.Message}");
                 ViewData["GenreId"] = new SelectList(genreRepo.GetAll(), "Id", "Name", book.GenreId);
                 ViewData["AuthorId"] = new SelectList(authorRepo.GetAll(), "Id", "FullName", book.AuthorId);
-                return View(book);
-            }
+            return View(book);
+        }
             return RedirectToAction(nameof(Index));
         }
 
@@ -118,9 +118,9 @@ namespace MarinFinancialSample.Controllers
                 try
                 {
                     bookRepo.Update(book);
-                }
+                    }
                 catch (Exception ex)
-                {
+                    {
                     ModelState.AddModelError(string.Empty, $@"Unable to save the record. {ex.Message}");
                     return View(book);
                 }
@@ -157,11 +157,11 @@ namespace MarinFinancialSample.Controllers
             try
             {
                 var book = bookRepo.GetOne(id);
-                if (book != null)
-                {
+            if (book != null)
+            {
                     bookRepo.Delete(book);
-                }
-
+            }
+            
             }
             catch (Exception ex)
             {
@@ -170,5 +170,9 @@ namespace MarinFinancialSample.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        private bool BookExists(int id)
+        {
+          return (_context.Books?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
     }
 }

@@ -63,8 +63,8 @@ namespace MarinFinancialSample.Controllers
             catch (Exception ex)
             {
                 ModelState.AddModelError(string.Empty, $@"Unable to create record: {ex.Message}");
-                return View(author);
-            }
+            return View(author);
+        }
             return RedirectToAction(nameof(Index));
         }
 
@@ -106,6 +106,11 @@ namespace MarinFinancialSample.Controllers
                 {
                     ModelState.AddModelError(string.Empty, $@"Unable to save the record. {ex.Message}");
                     return View(author);
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
                 return RedirectToAction(nameof(Index));
             }
@@ -137,14 +142,16 @@ namespace MarinFinancialSample.Controllers
             try
             {
                 var author = authorRepo.GetOne(id);
-                if (author != null)
-                {
-                    authorRepo.Delete(author);
-                }
-
-            }
-            catch (Exception ex)
+            if (author != null)
             {
+                    authorRepo.Delete(author);
+            }
+            
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+            catch (Exception ex)
+        {
                 ModelState.AddModelError(string.Empty, $@"Unable to create record: {ex.Message}");
             }
             return RedirectToAction(nameof(Index));
