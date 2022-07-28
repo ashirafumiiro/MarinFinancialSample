@@ -169,10 +169,5 @@ namespace MarinFinancialSample.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
-
-        private bool BookExists(int id)
-        {
-          return (_context.Books?.Any(e => e.Id == id)).GetValueOrDefault();
-        }
     }
 }
