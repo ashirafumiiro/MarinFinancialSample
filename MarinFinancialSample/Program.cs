@@ -12,6 +12,20 @@ builder.Services.AddTransient<IBookInstanceRepo, BookInstanceRepo>();
 builder.Services.AddTransient<IAuthorRepo, AuthorRepo>();
 builder.Services.AddTransient<IGenreRepo, GenreRepo>();
 
+var allOrigins = "AllOrigins";
+
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(allOrigins,
+        policy =>
+        {
+            policy.WithOrigins("*")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+        });
+});
+
 
 builder.Services.AddControllersWithViews();
 
@@ -37,6 +51,8 @@ using (var scope = app.Services.CreateScope())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+
+app.UseCors(allOrigins);
 app.UseRouting();
 
 app.UseAuthorization();
