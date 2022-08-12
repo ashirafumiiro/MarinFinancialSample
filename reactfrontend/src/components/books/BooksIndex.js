@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import { Table } from 'react-bootstrap';
 import { Button, ButtonToolbar } from 'react-bootstrap';
 
@@ -29,7 +29,7 @@ const BooksIndex = ({ books, handleDelete }) => {
                     {books.map(book =>
                         <tr key={book.id}>
                             <td>{book.id}</td>
-                            <td>{book.title}</td>
+                            <td><Link to={`/books/${book.id}`}>{book.title}</Link></td>
                             <td>{book.summary}</td>
                             <td>{book.isbn}</td>
                             <td>{book.author.firstName + " " + book.author.lastName}</td>

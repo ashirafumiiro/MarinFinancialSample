@@ -94,12 +94,6 @@ const App = () => {
     }
 
     const handleSubmitGenre = (genre) => {
-        // event.preventDefault();
-        // const id = Number (event.target.id ? event.target.id.value || 0 : 0)
-        // const genre = {
-        //   id: id,
-        //   name: event.target.name.value,
-        // }
         if(genre.id === 0){
           return genreService
           .create(genre)

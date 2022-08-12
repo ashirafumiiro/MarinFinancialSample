@@ -17,8 +17,8 @@ const Books = ({ books, authors, genres, handleSubmit, handleUpdate, handleDelet
       <Routes>
         <Route index element={<BooksIndex books={books} handleUpdate={handleUpdate} authors={authors} genres={genres} handleDelete={handleDelete} />} />
         <Route path='create' element={<BookForm handleSubmit={handleSubmit} authors={authors} genres={genres} />} />
-        <Route path='edit/:bookId' element={<BookEdit handleUpdate={handleUpdate} authors={authors} genres={genres} book={bookToEdit} />} />
-        <Route path=':bookId' element={<Book book={book} />} />
+        <Route path='edit/:id' element={<BookEdit handleUpdate={handleUpdate} authors={authors} genres={genres} book={bookToEdit} />} />
+        <Route path=':id' element={<Book book={book} books={books} />} />
       </Routes>
     </div>
   )
