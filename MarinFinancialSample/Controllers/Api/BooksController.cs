@@ -59,6 +59,8 @@ namespace MarinFinancialSample.Controllers.Api
                 try
                 {
                     bookRepo.Update(book);
+                    var bookToReturn = bookRepo.GetOne(id);
+                    return new JsonResult(book);
                 }
                 catch (Exception ex)
                 {
@@ -77,13 +79,15 @@ namespace MarinFinancialSample.Controllers.Api
             try
             {
                 bookRepo.Add(book);
+                var bookToReturn = bookRepo.GetOne(book.Id);
+                return new JsonResult(book);
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
 
-                return CreatedAtAction("GetBook", new { id = book.Id }, book);
+                //return CreatedAtAction("GetBook", new { id = book.Id }, book);
         }
 
         // DELETE: api/Books/5

@@ -65,6 +65,7 @@ namespace MarinFinancialSample.Controllers.Api
             try
             {
                 await _context.SaveChangesAsync();
+                return new JsonResult(genre);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -93,7 +94,7 @@ namespace MarinFinancialSample.Controllers.Api
             _context.Genres.Add(genre);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetGenre", new { id = genre.Id }, genre);
+            return new JsonResult(genre);
         }
 
         // DELETE: api/Genres/5
