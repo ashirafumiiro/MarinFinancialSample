@@ -14,6 +14,9 @@ namespace DataAccess.Entities
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
         public DateTime? DateOfDeath { get; set; }
+        public int GenreId { get; set; }
+
+        public Genre Genre { get; set; }
 
         [NotMapped]
         public string FullName { get => $"{this.FirstName} {this.LastName}"; }

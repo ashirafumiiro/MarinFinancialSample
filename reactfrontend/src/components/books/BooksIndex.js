@@ -53,7 +53,7 @@ const BooksIndex = ({ books, handleDelete }) => {
             </Table>
 
             <ButtonToolbar>
-                <Button variant='primary'
+                <Button variant='primary' id='add-book-button'
                     onClick={() => navigate('/books/create')}>
                     Add New</Button>
             </ButtonToolbar>

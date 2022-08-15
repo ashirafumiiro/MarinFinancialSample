@@ -67,7 +67,7 @@ const BookForm = (props) => {
           </Form.Group>
 
           <Form.Group className="pt-3">
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" id='save-button'>
               Save
             </Button>
           </Form.Group>
